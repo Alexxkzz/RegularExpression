@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <p>Name:</p>
+        <input type="text" name="name" id="nameInput" autocomplete="off">
+        <p id="errorForName" style="display:none"></p>
+        <p>Phone:</p>
+        <input type="text" name="phone" id="phoneInput" autocomplete="off">
+        <p id="errorForPhone" style="display:none"></p>
+        <p>Email:</p>
+        <input type="text" name="email" id="emailInput" autocomplete="off">
+        <p id="errorForEmail" style="display:none"></p>
+        <p>Password:</p>
+        <input type="text" name="password" id="passwordInput" autocomplete="off">
+        <p id="errorForPassword" style="display:none"></p>
+        <div style="margin-top: 2rem;">
+            <button type="submit" onclick="submitForm()">Submit</button>
+        </div>
+
+    </div>
+
+ 
+    <script src="./script.js"></script>
+</body>
+</html>
