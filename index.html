@@ -6,27 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div style="display: flex; align-items: center; flex-direction: column;">
+<body style="display:grid; place-items: center;">
+    <div style="display: flex; flex-direction: column; padding:2rem; border: 1px solid black; width:20%;">
+        <p style="text-align: center;">Form Validation</p>
         <p>Name:</p>
         <input type="text" name="name" id="nameInput" autocomplete="off">
-        <p id="errorForName" style="display:none"></p>
+
         <p>Phone:</p>
         <input type="text" name="phone" id="phoneInput" autocomplete="off">
-        <p id="errorForPhone" style="display:none"></p>
+
         <p>Email:</p>
         <input type="text" name="email" id="emailInput" autocomplete="off">
-        <p id="errorForEmail" style="display:none"></p>
+
         <p>Password:</p>
         <input type="text" name="password" id="passwordInput" autocomplete="off">
-        <p id="errorForPassword" style="display:none"></p>
+
         <div style="margin-top: 2rem;">
             <button type="submit" onclick="submitForm()">Submit</button>
         </div>
 
     </div>
-
- 
     <script src="./script.js"></script>
 </body>
 </html>
