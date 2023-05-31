@@ -272,58 +272,85 @@ let string="Alexx is  a youtuber good boy and he is youtuber"  /* a string in wh
 // let regex=/ba{3,8}/gi
 // console.log(string1.match(regex))
 
-const submitForm=(e)=>{
-    let name=document.querySelector('#nameInput');
-    let phone=document.querySelector('#phoneInput');
-    let email=document.querySelector('#emailInput');
-    let password=document.querySelector('#passwordInput');
-    console.log(name.value,phone.value,email.value,password.value);
-    // for eg: John Doe
-    let regexForName=/^([a-zA-Z]){1,}\s([a-zA-Z]){1,}$/
-    let correctName=regexForName.test(name.value);
-    // console.log(correctName);
-    if(!correctName){
-        document.querySelector("#errorForName").style.display="block"
-        document.querySelector("#errorForName").innerHTML="Please enter valid name!"
-    }else{
-        document.querySelector("#errorForName").style.display="none"
-        document.querySelector("#errorForName").innerHTML=""
+// form validation
+
+function submitForm() {
+    const name = document.querySelector('#nameInput');
+    // console.log(name)
+    const nameValue = name.value;
+    // console.log(nameValue)
+    const phone = document.querySelector('#phoneInput');
+    const phoneValue = phone.value;
+    const email = document.querySelector('#emailInput');
+    const emailValue = email.value;
+    const password = document.querySelector('#passwordInput');
+    const passwordValue = password.value;
+    // console.log(phoneValue,emailValue,passwordValue,nameValue)
+
+    let regexForName = /([A-Z]{1}[a-z]{1,})\s([A-Z]{1}[a-z]{1,})/
+    const nameResult = regexForName.test(nameValue)
+    console.log(nameResult)
+    if (nameResult === false) {
+        const errorForName = document.querySelector("#errorForName")
+        errorForName.style.display = "block"
+        errorForName.textContent = "Please enter a valid name"
+        name.style.border = "1px solid red"
+    } else {
+        errorForName.style.display = "none"
+        name.style.border = "1px solid black"
     }
 
-    let regexForPhone=/^([789]){1}([0-9]){9}$/
-    let correctPhone=regexForPhone.test(phone.value);
-    if(!correctPhone){
-        document.querySelector("#errorForPhone").style.display="block"
-        document.querySelector("#errorForPhone").innerHTML="Please enter valid Phone!"
-    }else{
-        document.querySelector("#errorForPhone").style.display="none"
-        document.querySelector("#errorForPhone").innerHTML=""
+
+    let regexForPhone = /[789]{1}[0-9]{9}/
+    const phoneResult = regexForPhone.test(phoneValue)
+    console.log(phoneResult)
+    if (phoneResult === false) {
+        const errorForPhone = document.querySelector("#errorForPhone")
+        errorForPhone.style.display = "block"
+        errorForPhone.textContent = "Please enter a valid phone"
+        phone.style.border = "1px solid red"
+    } else {
+        errorForPhone.style.display = "none"
+        phone.style.border = "1px solid black"
     }
 
-    let regexForEmail=/^([a-zA-Z0-9\._-]){1,}@([a-zA-Z0-9]){1,}.([a-zA-Z]){1,}$/
-    let correctEmail=regexForEmail.test(email.value);
-    if(!correctEmail){
-        document.querySelector("#errorForEmail").style.display="block"
-        document.querySelector("#errorForEmail").innerHTML="Please enter valid Email!"
-    }else{
-        document.querySelector("#errorForEmail").style.display="none"
-        document.querySelector("#errorForEmail").innerHTML=""
+    let regexForEmail = /^([0-9A-Za-z_\.-]){1,}@([0-9A-Za-z_\.-]){1,}\.([A-Za-z]){2,3}$/
+    const emailResult = regexForEmail.test(emailValue)
+    console.log(emailResult)
+    if (emailResult === false) {
+        const errorForEmail = document.querySelector("#errorForEmail")
+        errorForEmail.style.display = "block"
+        errorForEmail.textContent = "Please enter a valid email"
+        email.style.border = "1px solid red"
+    } else {
+        errorForEmail.style.display = "none"
+        email.style.border = "1px solid black"
     }
 
-    // password must contain one special character, 3 numbers,must start with capital letter ,minimum length=8 
-    let regexForPasswordOne=/[!@#$%^&*]{1,}/
-    let regexForPasswordSecond=/[0-9]{3,}/
-    let regexForPasswordThird=/^[A-Z]{1,}/
-    let regexForPasswordFourth=/\.{8,}/
-    let correctPasswordOne=regexForPasswordOne.test(password.value);
-    let correctPasswordSecond=regexForPasswordSecond.test(password.value);
-    let correctPasswordThird=regexForPasswordThird.test(password.value);
-    let correctPasswordFourth=regexForPasswordFourth.test(password.value);
-    if(!correctPasswordOne && !correctPasswordSecond && !correctPasswordThird  && !correctPasswordFourth ){
-        document.querySelector("#errorForPassword").style.display="block"
-        document.querySelector("#errorForPassword").innerHTML="Please enter valid Password!"
+    //  a password must be eight characters
+    //  must start with  uppercase letter, 
+    // must have at least one special character 
+    // must have numeric characters
+     
+    let regexForFirstCondition=/.{8,}/;
+    let regexForSecondCondition=/^[A-Z]/
+    let regexForThirdCondition=/[^a-zA-Z0-9]{1,}/
+    let regexForFourthCondition=/[0-9]{1,}/
+
+    let passwordResultForFirstCondition=regexForFirstCondition.test(passwordValue);
+    let passwordResultForSecondCondition=regexForSecondCondition.test(passwordValue);
+    let passwordResultForThirdCondition=regexForThirdCondition.test(passwordValue);
+    let passwordResultForFourthCondition=regexForFourthCondition.test(passwordValue);
+    console.log(passwordResultForFirstCondition,passwordResultForSecondCondition,passwordResultForThirdCondition,passwordResultForFourthCondition)
+
+    if(!passwordResultForFirstCondition || !passwordResultForSecondCondition || !passwordResultForThirdCondition || !passwordResultForFourthCondition){
+        const errorForPassword = document.querySelector("#errorForPassword")
+        errorForPassword.style.display = "block"
+        errorForPassword.textContent = "Please enter a valid password"
+        password.style.border = "1px solid red"
     }else{
-        document.querySelector("#errorForPassword").style.display="none"
-        document.querySelector("#errorForPassword").innerHTML=""
+        errorForPassword.style.display = "none"
+        password.style.border = "1px solid black"
     }
+    
 }
